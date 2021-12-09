@@ -1,13 +1,15 @@
+
+const { response } = require("express");
 var express = require("express");
 var apiServer = express();
-
+var fs = require("fs");
 console.log("funziona");
 
 var port = 3000;
 var host = "localhost";
 
 apiServer.listen(port, host, () => {
-  console.log("server running at https://%s:d%", host, port);
+  console.log("server running at http://",host, port);
 });
 
 apiServer.get("/", (request, response) => {
@@ -15,7 +17,7 @@ apiServer.get("/", (request, response) => {
   response.send("<h1> Ciao client sei in home </h1>");
 });
 
-var nome = "Martoccia";
+var nome = "Amogus";
 apiServer.get("/nome", (request, response) => {
   console.log("richiesta get su nome");
   response.send("Ciao il mio nome è: " + nome);
@@ -23,10 +25,29 @@ apiServer.get("/nome", (request, response) => {
 
 apiServer.get("/mioNome", (request, response) => {
   console.log("richiesta get su mioNome", request.query.nome);
-  response.send("Ciao il mio nome è: "+request.query.nome);
+  response.send("Ciao il mio nome è: " + request.query.nome);
 });
 
+// http://localhost:3000/somma?a=1&b=2
 apiServer.get("/somma", (request, response) => {
   console.log("somma request", request.query.nome);
-  response.send("risultato = "+(parseInt(request.query.a)+parseInt(request.query.b)));
+  response.send("risultato = " + (parseInt(request.query.a) + parseInt(request.query.b)));
+});
+
+// http://localhost:3000/student?id=69
+apiServer.get("/student", (request, response)=>{
+  console.log("student.id: ", request.query.id);
+  fs.readFile("students.json",(err, data) => {
+    if(err) {
+      console.log("error: " + err);
+    }else{
+      var students = JSON.parse(data);
+      for (let index = 0; index < students.length; index++) {
+        if(students[index].id == parseInt(request.query.id)){
+          console.log("students: " + students[index].surname);
+          response.send("students: " + students[index].surname);
+        }
+      }
+    }
+  });
 });
