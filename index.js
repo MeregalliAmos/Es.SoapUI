@@ -25,3 +25,8 @@ apiServer.get("/mioNome", (request, response) => {
   console.log("richiesta get su mioNome", request.query.nome);
   response.send("Ciao il mio nome è: "+request.query.nome);
 });
+
+apiServer.get("/somma", (request, response) => {
+  console.log("somma request", request.query.nome);
+  response.send("risultato = "+(request.query.nome-(-request.query.b)));
+});
