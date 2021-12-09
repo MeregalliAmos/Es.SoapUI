@@ -28,5 +28,5 @@ apiServer.get("/mioNome", (request, response) => {
 
 apiServer.get("/somma", (request, response) => {
   console.log("somma request", request.query.nome);
-  response.send("risultato = "+(request.query.nome-(-request.query.b)));
+  response.send("risultato = "+(parseInt(request.query.a)+parseInt(request.query.b)));
 });
