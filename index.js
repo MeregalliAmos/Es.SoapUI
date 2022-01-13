@@ -25,8 +25,8 @@ apiServer.get("/nome", (request, response) => {
 
 apiServer.get("/mioNome", (request, response) => {
   console.log("richiesta get su mioNome", request.query.nome);
-  response.type('application/json');
-  response.send("Ciao il mio nome è: " + request.query.nome);
+  response.setHeader("Content-Type","application/json");
+  response.send(JSON.stringify({"nome":request.query.nome}, null, 3));
 });
 
 // http://localhost:3000/somma?a=1&b=2
