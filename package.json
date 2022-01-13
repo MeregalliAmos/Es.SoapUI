@@ -1,5 +1,5 @@
 {
-  "name": "node-js",
+  "name": "js",
   "version": "1.0.0",
   "description": "node js",
   "main": "index.js",
@@ -10,5 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BiskoBerty/NodeJsEs1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BiskoBerty/NodeJsEs1/issues"
+  },
+  "homepage": "https://github.com/BiskoBerty/NodeJsEs1#readme"
 }

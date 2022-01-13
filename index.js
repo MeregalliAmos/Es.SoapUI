@@ -17,7 +17,7 @@ apiServer.get("/", (request, response) => {
   response.send("<h1> Ciao client sei in home </h1>");
 });
 
-var nome = "Amogus";
+var nome = "Amos";
 apiServer.get("/nome", (request, response) => {
   console.log("richiesta get su nome");
   response.send("Ciao il mio nome è: " + nome);
@@ -25,6 +25,7 @@ apiServer.get("/nome", (request, response) => {
 
 apiServer.get("/mioNome", (request, response) => {
   console.log("richiesta get su mioNome", request.query.nome);
+  response.type('application/json');
   response.send("Ciao il mio nome è: " + request.query.nome);
 });
 
