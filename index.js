@@ -23,10 +23,16 @@ apiServer.get("/nome", (request, response) => {
   response.send("Ciao il mio nome è: " + nome);
 });
 
-apiServer.get("/mioNome", (request, response) => {
+/*apiServer.get("/mioNome", (request, response) => {
   console.log("richiesta get su mioNome", request.query.nome);
   response.setHeader("Content-Type","application/json");
   response.send(JSON.stringify({"nome":request.query.nome}, null, 3));
+});*/
+
+apiServer.post("/mioNome", (request, response) => {
+  console.log("richiesta post su mioNome", request.body.nome);
+  response.setHeader("Content-Type","application/json");
+  response.send(JSON.stringify({"nome":request.body.nome}, null, 3));
 });
 
 // http://localhost:3000/somma?a=1&b=2
